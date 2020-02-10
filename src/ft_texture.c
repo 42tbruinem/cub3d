@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 17:56:12 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/10 16:39:40 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/10 20:47:56 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int			ft_tex_x_get(t_data *data, t_dda *dda, double dist)
 	else
 		hitpos = data->cam.pos.x + dist * data->cam.ray.dir.x;
 	hitpos -= floor(hitpos);
+	hitpos = 1 - hitpos;
 	tex_x = (int)(hitpos * (double)texwidth);
 	if ((dda->side == EAST || dda->side == WEST) && data->cam.ray.dir.x > 0)
 		tex_x = texwidth - tex_x - 1;

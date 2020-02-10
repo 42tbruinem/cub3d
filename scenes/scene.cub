@@ -1,11 +1,11 @@
-NO ./textures/wall_north.png
+NO ./textures/awesomeface.png
 R 1920 1080
-SO ./textures/wall_south.png
+SO ./textures/greystone.png
 WE ./textures/wall_west.png
 EA ./textures/wall_east.png
 S ./textures/sprite.png
-F 50,0,0
-  C 0,0,50
+F 0,0,255
+  C 255,0,0
 
 
 

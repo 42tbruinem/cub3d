@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 13:26:04 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/06 16:43:05 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/10 19:16:05 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		ft_direction_init(t_data *data)
 	double	direction;
 
 	direction = ft_deg2rad(data->scene.direction);
-	data->cam.dir.x = -cos(direction);
+	data->cam.dir.x = cos(direction);
 	data->cam.plane.x = sin(direction);
 	data->cam.dir.y = -sin(direction);
 	data->cam.plane.y = cos(direction);
