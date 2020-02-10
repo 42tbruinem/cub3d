@@ -6,7 +6,7 @@
 #    By: tbruinem <tbruinem@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/12/30 11:07:31 by tbruinem       #+#    #+#                 #
-#    Updated: 2020/02/10 17:00:43 by tbruinem      ########   odam.nl          #
+#    Updated: 2020/02/10 17:32:57 by tbruinem      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ SRC =	$(SRC_DIR)/cub3d.c \
 
 #----------------------------------FLAGS---------------------------------------
 
-C_FLAGS = -O0 -I $(INCLUDE_DIR)
+C_FLAGS = -O3 -I $(INCLUDE_DIR)
 C_FLAGS += -Wall -Wextra -Werror
 ifeq ($(OS),Linux)
 	C_FLAGS += $(addprefix $(GNL)/, *.c) -D BUFFER_SIZE=40
