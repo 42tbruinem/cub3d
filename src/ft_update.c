@@ -6,79 +6,39 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/05 12:54:54 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/10 21:17:27 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/11 16:37:04 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <stdio.h>
+
+int		ft_iseq(double c1, double c2)
+{
+	if (c1 - c2 >= -0.01 && c1 - c2 <= 0.01)
+		return (1);
+	return (0);
+}
 
 t_vec	ft_bumpifround(char **map, t_vec orig)
 {
 	t_vec	new;
 
 	new = orig;
-	printf("orig: %f,%f\n", orig.x, orig.y);
-	printf("floor: %f,%f\n", floor(orig.x), floor(orig.y));
-	printf("ceil: %f,%f\n", ceil(orig.x), ceil(orig.y));
-	if ((int)orig.y - 1 > 0 && map[(int)orig.y - 1][(int)orig.x] == '1')
-		printf("WALL UP\n");
-	if (map[(int)orig.y + 1][(int)orig.x] == '1')
-		printf("WALL DOWN\n");
-	if ((int)orig.x - 1 > 0 && map[(int)orig.y][(int)orig.x - 1] == '1')
-		printf("WALL LEFT\n");
-	if (map[(int)orig.y][(int)orig.x + 1] == '1')
-		printf("WALL RIGHT\n");
-/* 	if (floor(orig.y) == orig.y || ceil(orig.y) == orig.y)
-	{
-		if ((ceil(orig.x) == orig.x &&
-		map[(int)orig.y - 1][(int)floor(orig.x - 1)] == '1') ||
-		map[(int)orig.y - 1][(int)(floor(orig.x))] == '1')
-			new.y += 0.05;
-		else
-			new.y -= 0.05;
-	}
-	if (ceil(orig.x) == orig.x || floor(orig.x) == orig.x)
-	{
-		if ((ceil(orig.y) == orig.y &&
-		map[(int)floor(orig.y - 1)][(int)orig.x - 1] == '1') ||
-		map[(int)floor(orig.y)][(int)orig.x - 1] == '1')
-			new.x -= 0.05;
-		else
-			new.x += 0.05;
-	} */
-	if (ceil(orig.x) == orig.x && 
-		map[(int)orig.y][(int)ceil(orig.x)] == '1')
+	if (ft_iseq(floor(orig.y), orig.y) &&
+		(int)orig.y - 1 > 0 && map[(int)orig.y - 1][(int)orig.x] == '1')
+		new.y += 0.05;
+	if (ft_iseq(ceil(orig.y), orig.y) &&
+		map[(int)orig.y + 1][(int)orig.x] == '1')
+		new.y -= 0.05;
+	if (ft_iseq(floor(orig.x), orig.x) &&
+		(int)orig.x - 1 > 0 && map[(int)orig.y][(int)orig.x - 1] == '1')
 		new.x += 0.05;
+	if (ft_iseq(ceil(orig.x), orig.x) &&
+		map[(int)orig.y][(int)orig.x + 1] == '1')
+		new.x -= 0.05;
 	return (new);
 }
 
-/* void			ft_bumpifround(double *x, double *y, char **map)
-{
-	if (ceil(*y) == *y)
-	{
-		if (ceil(*x) == *x)
-		{
-			if (map[(int)*y - 1][(int)floor(*x - 1)] == '1'
-					|| map[(int)*y - 1][(int)floor(*x)] == '1')
-				*y += 0.05;
-		}
-		else if (map[(int)*y - 1][(int)(floor(*x))] == '1')
-			*y += 0.05;
-	}
-	if (ceil(*x) == *x)
-	{
-		if (ceil(*y) == *y)
-		{
-			if (map[(int)floor(*y - 1)][(int)*x - 1] == '1'
-					|| map[(int)floor(*y)][(int)*x - 1] == '1')
-				*x += 0.05;
-		}
-		else if (map[(int)floor(*y)][(int)*x - 1] == '1')
-			*x -= 0.05;
-	}
-}
- */
 void	ft_position_update(t_data *data, t_vec incr, double speed)
 {
 	char	**map;
@@ -93,7 +53,6 @@ void	ft_position_update(t_data *data, t_vec incr, double speed)
 	if (pos.x > 0 && map[(int)data->cam.pos.y][(int)pos.x] != '1')
 		data->cam.pos.x = pos.x;
 	data->cam.pos = ft_bumpifround(data->mapdata.map, data->cam.pos);
-//	ft_bumpifround(&data->cam.pos.x, &data->cam.pos.y, map);
 }
 
 int		ft_mlx_update(t_data *data)
