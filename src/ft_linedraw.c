@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 14:53:59 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/06 15:51:19 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/17 12:44:06 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void		ft_line_draw(t_data *data, t_dda *dda, t_line line, t_texdata tex)
 	double	tex_y;
 
 	i = 0;
-	tex_y = (line.start - data->mlx.height / 2 + line.length / 2) * tex.y_step;
-	tex_y = (tex_y < 0) ? 0 : tex_y - tex.y_step;
+	tex_y = ((line.start - data->mlx.height / 2 + line.length / 2)
+			* tex.y_step) - tex.y_step;
 	while (i < data->mlx.height)
 	{
 		if (i >= line.start && i <= line.end)
