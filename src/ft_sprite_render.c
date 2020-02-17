@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 12:01:42 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/17 13:08:42 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/17 13:12:21 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ void	ft_drawdata_get(t_data *data,
 		render->drawend.y = data->mlx.height - 1;
 	render->drawstart.x = -render->spriteres.x / 2 + spritescreen_x;
 	render->drawend.x = render->spriteres.x / 2 + spritescreen_x;
-	if (render->drawend.x >= data->mlx.width - 2)
-		printf("drawend: %f\n", render->drawend.x);
 	if (render->drawstart.x < 0)
 		render->drawstart.x = 0;
 	if (render->drawend.x >= data->mlx.width)

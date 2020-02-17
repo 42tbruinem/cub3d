@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 12:35:38 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/17 12:34:26 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/17 13:12:01 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <fcntl.h>
 # include <sys/stat.h>
 # include <sys/types.h>
-# include <stdio.h>
 
 # ifndef MAX_WIDTH
 #  define MAX_WIDTH 2560
