@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 17:16:58 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/09 14:11:52 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/17 11:53:37 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,12 @@ void	ft_validate_map(t_data *data)
 		y++;
 	}
 	map[y] = 0;
-	(void)ft_mapcheck(data, map, data->cam.pos.x, data->cam.pos.y);
+	if (!(ft_mapcheck(map, data->cam.pos.x, data->cam.pos.y, 100000)))
+	{
+		ft_map_del(map);
+		exit(ft_error(data, ERR_STR_MAPERROR, -1));
+	}
 	ft_map_edit(data, map);
-	ft_map_del(map);
 }
 
 void	ft_validate_data(t_data *data)

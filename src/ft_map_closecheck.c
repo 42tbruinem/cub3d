@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/05 19:14:11 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/13 18:57:22 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/17 11:52:51 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,22 @@ void	ft_map_edit(t_data *data, char **reachable)
 	}
 }
 
-int		ft_mapcheck(t_data *data, char **map, int x, int y)
+int		ft_mapcheck(char **map, int x, int y, int maxdepth)
 {
-	if (y < 0 || x < 0 || !map[y][x])
-	{
-		ft_map_del(map);
-		exit(ft_error(data, ERR_STR_OPENMAP, -1));
-	}
+	if ((y < 0 || x < 0) || (!map[y][x] || maxdepth <= 0))
+		return (0);
 	if (map[y][x] == 'X' || map[y][x] == '1')
 		return (1);
 	if (map[y][x] != '1' && !ft_match("NSWE", map[y][x]))
 		map[y][x] = 'X';
-	if (ft_mapcheck(data, map, x - 1, y) &&
-		ft_mapcheck(data, map, x + 1, y) &&
-		ft_mapcheck(data, map, x, y - 1) &&
-		ft_mapcheck(data, map, x, y + 1) &&
-		ft_mapcheck(data, map, x - 1, y - 1) &&
-		ft_mapcheck(data, map, x + 1, y + 1) &&
-		ft_mapcheck(data, map, x - 1, y + 1) &&
-		ft_mapcheck(data, map, x + 1, y - 1))
+	if (ft_mapcheck(map, x - 1, y, maxdepth - 1) &&
+		ft_mapcheck(map, x + 1, y, maxdepth - 1) &&
+		ft_mapcheck(map, x, y - 1, maxdepth - 1) &&
+		ft_mapcheck(map, x, y + 1, maxdepth - 1) &&
+		ft_mapcheck(map, x - 1, y - 1, maxdepth - 1) &&
+		ft_mapcheck(map, x + 1, y + 1, maxdepth - 1) &&
+		ft_mapcheck(map, x - 1, y + 1, maxdepth - 1) &&
+		ft_mapcheck(map, x + 1, y - 1, maxdepth - 1))
 		return (1);
-	ft_map_del(map);
-	exit(ft_error(data, ERR_STR_OPENMAP, -1));
+	return (0);
 }

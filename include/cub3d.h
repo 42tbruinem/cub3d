@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 12:35:38 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/10 16:53:01 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/17 11:26:16 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@
 # define ERR_STR_OBSTRUCT "Map is obstructed."
 # define ERR_STR_MAPCHAR "Invalid map character."
 # define ERR_STR_OPENMAP "Map isn't closed."
+# define ERR_STR_MAPERROR "Map is either not closed or too big to parse"
 # define ERR_STR_ID "Line doesnt start with a (valid) identifier."
 # define ERR_STR_NODIR "No player direction is specified."
 # define ERR_STR_DOUBLEDIR "Player direction specified more than once."
@@ -312,7 +313,7 @@ int				ft_map_size(char **map);
 **				VALIDATION
 */
 
-int				ft_mapcheck(t_data *data, char **map, int x, int y);
+int				ft_mapcheck(char **map, int x, int y, int maxrec);
 int				ft_validate_range(int min, int max, int nb);
 int				ft_validate_input(t_data *data, int argc, char **input);
 int				ft_validate_type(char *str);
