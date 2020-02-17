@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 12:01:42 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/10 17:20:23 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/17 13:08:42 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void	ft_sprite_drawx(t_data *data, t_spriterender *render,
 	int		x;
 
 	x = render->drawstart.x;
-	while (x < render->drawend.x)
+	while (x <= render->drawend.x)
 	{
 		render->tex.x = (int)(256 * (x - (-render->spriteres.x / 2 +
 			spritescreen_x)) * data->scene.sprite.width /
 			render->spriteres.x) / 256;
-		if (render->transform.y > 0 && x > 0 && x < data->mlx.width &&
+		if (render->transform.y > 0 && x >= 0 && x < data->mlx.width &&
 			render->transform.y < data->mapdata.dist[x])
 			ft_sprite_drawy(data, render, x, ad);
 		x++;
@@ -83,6 +83,8 @@ void	ft_drawdata_get(t_data *data,
 		render->drawend.y = data->mlx.height - 1;
 	render->drawstart.x = -render->spriteres.x / 2 + spritescreen_x;
 	render->drawend.x = render->spriteres.x / 2 + spritescreen_x;
+	if (render->drawend.x >= data->mlx.width - 2)
+		printf("drawend: %f\n", render->drawend.x);
 	if (render->drawstart.x < 0)
 		render->drawstart.x = 0;
 	if (render->drawend.x >= data->mlx.width)
