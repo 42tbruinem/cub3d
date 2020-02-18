@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 14:26:07 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/09 14:09:08 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/18 17:46:26 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void		ft_data_init(t_data *data)
 	data->mapdata.numsprites = 0;
 	data->scene.ceiling.color = 0;
 	data->scene.floor.color = 0;
+	data->scene.floor_set = 0;
+	data->scene.ceiling_set = 0;
 	data->scene.sprite.img = NULL;
 	data->scene.walls[EAST].img = NULL;
 	data->scene.walls[WEST].img = NULL;

@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 15:50:04 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/09 14:09:26 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/18 17:47:37 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_init_ceiling(t_data *data, char *line, int i, int linenr)
 	int		g;
 	int		b;
 
-	if (data->scene.ceiling.color != 0)
+	if (data->scene.ceiling_set != 0)
 		exit(ft_error(data, ERR_STR_DOUBLEID, linenr));
 	while (line[i] == ' ')
 		i++;
@@ -35,4 +35,5 @@ void	ft_init_ceiling(t_data *data, char *line, int i, int linenr)
 	data->scene.ceiling.packed.g = (unsigned char)g;
 	data->scene.ceiling.packed.b = (unsigned char)b;
 	data->scene.ceiling.packed.a = (unsigned char)0;
+	data->scene.ceiling_set = 1;
 }

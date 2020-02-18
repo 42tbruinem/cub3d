@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 12:35:38 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/17 13:12:01 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/18 17:46:43 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # endif
 
 # define FILE_TYPE ".cub"
-# define ROT_SPEED 1.5
-# define MOV_SPEED 0.1
+# define ROT_SPEED 2
+# define MOV_SPEED 0.080
 # ifndef SPRITESCALE
 #  define SPRITESCALE 1
 # endif
@@ -167,7 +167,9 @@ typedef struct	s_dda
 typedef struct	s_scene
 {
 	t_color		floor;
+	char		floor_set;
 	t_color		ceiling;
+	char		ceiling_set;
 	int			direction;
 	t_png		walls[4];
 	char		*tex[4];
@@ -221,7 +223,7 @@ typedef struct	s_reader
 typedef struct	s_spriterender
 {
 	t_vec		spriteres;
-	t_vec		tex;
+	t_coord		tex;
 	t_vec		drawstart;
 	t_vec		drawend;
 	t_vec		transform;
@@ -336,7 +338,7 @@ void			ft_raycast(t_data *data);
 
 double			ft_tex_y_get(t_data *data, t_dda *dda, t_line line);
 int				ft_tex_x_get(t_data *data, t_dda *dda, double dist);
-t_color			ft_texture_get(t_data *data, t_dda *dda, t_texdata tex, int y);
+t_color			ft_texture_get(t_data *data, t_dda *dda, int x, int y);
 void			ft_line_draw(t_data *data, t_dda *dda,
 				t_line line, t_texdata tex);
 void			ft_draw(t_data *data, t_dda *dda, double dist, int x);

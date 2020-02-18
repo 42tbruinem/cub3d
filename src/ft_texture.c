@@ -6,20 +6,22 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 17:56:12 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/10 20:47:56 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/18 12:35:06 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <stdio.h>
 
-t_color		ft_texture_get(t_data *data, t_dda *dda, t_texdata tex, int y)
+t_color		ft_texture_get(t_data *data, t_dda *dda, int x, int y)
 {
 	char			*image;
 	t_color			color;
 
 	image = data->scene.tex[dda->side];
+//	printf("X:%d | Y:%d\n", x, y);
 	image += (y * data->scene.walls[dda->side].ll +
-			(tex.x * (data->scene.walls[dda->side].bpp / 8)));
+			(x * (data->scene.walls[dda->side].bpp / 8)));
 	color.color = *(unsigned int *)image;
 	return (color);
 }
@@ -60,6 +62,8 @@ t_texdata	ft_texdata_get(t_data *data, t_dda *dda, double dist, t_line line)
 	t_texdata	tex;
 
 	tex.x = ft_tex_x_get(data, dda, dist);
+	if (tex.x < 0)
+		tex.x = 0;
 	tex.y_step = ft_tex_y_get(data, dda, line);
 	return (tex);
 }

@@ -6,19 +6,20 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 12:01:42 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/17 13:12:21 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/18 17:39:01 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <stdio.h>
 
 void	ft_sprite_drawy(t_data *data, t_spriterender *render, int x, int ad)
 {
-	int		y;
-	int		d;
-	char	*image;
-	t_png	sprite;
-	t_color	col;
+	int					y;
+	int					d;
+	unsigned int		*image;
+	t_png				sprite;
+	t_color				col;
 
 	y = render->drawstart.y;
 	sprite = data->scene.sprite;
@@ -27,10 +28,11 @@ void	ft_sprite_drawy(t_data *data, t_spriterender *render, int x, int ad)
 		d = (y - ad) * 256 - data->mlx.height * 128 +
 			render->spriteres.y * 128;
 		render->tex.y = ((d * sprite.height) / render->spriteres.y) / 256;
-		image = data->scene.sprite_tex;
-		image += (int)((int)render->tex.y *
-			sprite.ll + ((int)render->tex.x * (sprite.bpp / 8)));
-		col.color = *(unsigned int *)image;
+		if (render->tex.y < 0)
+			render->tex.y = 0;
+		image = (unsigned int *)data->scene.sprite_tex;
+		col.color = image[render->tex.y *
+			(sprite.ll / 4) + render->tex.x];
 		if (col.packed.a == 0)
 			ft_mlx_pixel_to_img(data, x, y, col.color);
 		y++;
@@ -43,12 +45,12 @@ void	ft_sprite_drawx(t_data *data, t_spriterender *render,
 	int		x;
 
 	x = render->drawstart.x;
-	while (x <= render->drawend.x)
+	while (x < render->drawend.x)
 	{
 		render->tex.x = (int)(256 * (x - (-render->spriteres.x / 2 +
 			spritescreen_x)) * data->scene.sprite.width /
 			render->spriteres.x) / 256;
-		if (render->transform.y > 0 && x >= 0 && x < data->mlx.width &&
+		if (render->transform.y > 0 && x >= 0 && x < data->mlx.width - 1 &&
 			render->transform.y < data->mapdata.dist[x])
 			ft_sprite_drawy(data, render, x, ad);
 		x++;

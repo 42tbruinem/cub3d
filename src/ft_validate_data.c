@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 17:16:58 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/17 13:11:38 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/17 15:23:16 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	ft_validate_map(t_data *data)
 		exit(ft_error(data, ERR_STR_MAPERROR, -1));
 	}
 	ft_map_edit(data, map);
+	ft_map_del(map);
 }
 
 void	ft_validate_data(t_data *data)

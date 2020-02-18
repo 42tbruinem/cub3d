@@ -6,7 +6,7 @@
 #    By: tbruinem <tbruinem@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/12/30 11:07:31 by tbruinem       #+#    #+#                 #
-#    Updated: 2020/02/17 11:38:56 by tbruinem      ########   odam.nl          #
+#    Updated: 2020/02/18 17:43:07 by tbruinem      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ ifeq ($(DEBUG),1)
 	C_FLAGS += -g
 endif
 ifeq ($(DEBUG),2)
-	C_FLAGS += -fsanitize=address
+	C_FLAGS += -g3 -fsanitize=address
 endif
 
 #----------------------------------TAIL----------------------------------------

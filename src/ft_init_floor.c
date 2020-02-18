@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:05:50 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/09 14:09:50 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/18 17:47:23 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_init_floor(t_data *data, char *line, int i, int linenr)
 	int		g;
 	int		b;
 
-	if (data->scene.floor.color != 0)
+	if (data->scene.floor_set != 0)
 		exit(ft_error(data, ERR_STR_DOUBLEID, linenr));
 	r = ft_atoi(line, &i);
 	g = ft_atoi(line, &i);
@@ -33,4 +33,5 @@ void	ft_init_floor(t_data *data, char *line, int i, int linenr)
 	data->scene.floor.packed.g = (char)g;
 	data->scene.floor.packed.b = (char)b;
 	data->scene.floor.packed.a = (char)0;
+	data->scene.floor_set = 1;
 }
