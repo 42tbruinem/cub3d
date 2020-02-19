@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 12:35:38 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/19 12:21:11 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/19 14:33:33 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,13 +246,15 @@ typedef struct	s_data
 size_t			ft_strslen(char *str, char *set);
 size_t			ft_strclenb(char *str, char c);
 size_t			ft_strskipc(char *str, char c);
+char			ft_chrmatchs(char c, char *set);
+void			ft_memset(void *mem, size_t len, char c);
+void			*ft_calloc(size_t size, size_t len);
 void			ft_validate_color_entry(t_data *data, char *line, char *errstr);
 size_t			ft_strlens(char *str, char *set);
 size_t			ft_strlenc(char *str, char c);
 int				get_next_line(int fd, char **line);
 int				ft_error(t_data *data, char *errorstr, int line);
 void			ft_freedom(t_data *data);
-char			ft_chrmatchs(char c, char *set);
 void			ft_map_del(char **map);
 double			ft_abs(double n);
 char			*ft_strdupc(char *str, char c);

@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/05 12:54:54 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/11 16:37:04 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/19 17:51:31 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ t_vec	ft_bumpifround(char **map, t_vec orig)
 
 	new = orig;
 	if (ft_iseq(floor(orig.y), orig.y) &&
-		(int)orig.y - 1 > 0 && map[(int)orig.y - 1][(int)orig.x] == '1')
+		(int)orig.y - 1 > 0 &&
+		!ft_chrmatchs(map[(int)orig.y - 1][(int)orig.x], "1"))
 		new.y += 0.05;
 	if (ft_iseq(ceil(orig.y), orig.y) &&
 		map[(int)orig.y + 1][(int)orig.x] == '1')
 		new.y -= 0.05;
 	if (ft_iseq(floor(orig.x), orig.x) &&
-		(int)orig.x - 1 > 0 && map[(int)orig.y][(int)orig.x - 1] == '1')
+		(int)orig.x - 1 > 0 &&
+		!ft_chrmatchs(map[(int)orig.y][(int)orig.x - 1], "1"))
 		new.x += 0.05;
 	if (ft_iseq(ceil(orig.x), orig.x) &&
-		map[(int)orig.y][(int)orig.x + 1] == '1')
+		ft_chrmatchs(map[(int)orig.y][(int)orig.x + 1], "1"))
 		new.x -= 0.05;
 	return (new);
 }
@@ -43,16 +45,20 @@ void	ft_position_update(t_data *data, t_vec incr, double speed)
 {
 	char	**map;
 	t_vec	pos;
+	t_vec	newpos;
 
 	pos = data->cam.pos;
 	map = data->mapdata.map;
 	pos.x += speed * incr.x;
 	pos.y += speed * incr.y;
-	if (pos.y > 0 && map[(int)pos.y][(int)data->cam.pos.x] != '1')
-		data->cam.pos.y = pos.y;
-	if (pos.x > 0 && map[(int)data->cam.pos.y][(int)pos.x] != '1')
-		data->cam.pos.x = pos.x;
-	data->cam.pos = ft_bumpifround(data->mapdata.map, data->cam.pos);
+	newpos.y = data->cam.pos.y;
+	newpos.x = data->cam.pos.x;
+	if (pos.y > 0 && !ft_chrmatchs(map[(int)pos.y][(int)data->cam.pos.x], "12"))
+		newpos.y = pos.y;
+	if (pos.x > 0 && !ft_chrmatchs(map[(int)data->cam.pos.y][(int)pos.x], "12"))
+		newpos.x = pos.x;
+	newpos = ft_bumpifround(data->mapdata.map, newpos);
+	data->cam.pos = newpos;
 }
 
 int		ft_mlx_update(t_data *data)

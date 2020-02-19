@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/31 13:25:32 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/10 14:16:37 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/19 17:25:13 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void		ft_merge_sort(t_data *data, int s, int e)
 	merge.rsize = e - merge.middle;
 	merge.left = s;
 	merge.right = e;
-	right = malloc(sizeof(int) * (merge.lsize + 1));
-	left = malloc(sizeof(int) * (merge.rsize + 1));
+	right = ft_calloc(sizeof(int), merge.lsize + 1);
+	left = ft_calloc(sizeof(int), merge.rsize + 1);
 	if (!right || !left)
 		ft_free_tmps_and_exit(data, right, left, ERR_STR_MEM);
 	ft_merge_sort(data, s, merge.middle);

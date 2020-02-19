@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:07:08 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/09 14:10:53 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/19 17:49:29 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 void		ft_sprite_dist(t_data *data)
 {
 	int		i;
-	t_coord	sprite;
+	t_vec	sprite;
 	t_vec	pos;
 
 	i = 0;
 	while (i < data->mapdata.numsprites)
 	{
-		sprite = data->mapdata.sprites[i].pos;
+		sprite.x = data->mapdata.sprites[i].pos.x + 0.5;
+		sprite.y = data->mapdata.sprites[i].pos.y + 0.5;
 		pos = data->cam.pos;
 		data->mapdata.sprites[i].dist = ((pos.x - sprite.x) *
 			(pos.x - sprite.x) + (pos.y - sprite.y) * (pos.y - sprite.y));

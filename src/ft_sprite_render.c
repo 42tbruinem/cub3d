@@ -6,16 +6,17 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 12:01:42 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/19 12:24:33 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/19 17:53:12 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <stdio.h>
 
-void	ft_sprite_drawy(t_data *data, t_spriterender *render, int x, int ad)
+void	ft_sprite_drawy(t_data *data, t_spriterender *render, int x)
 {
 	int					y;
-	int					d;
+	double				d;
 	unsigned int		*image;
 	t_png				sprite;
 	t_color				col;
@@ -24,14 +25,14 @@ void	ft_sprite_drawy(t_data *data, t_spriterender *render, int x, int ad)
 	sprite = data->scene.sprite;
 	while (y < render->drawend.y)
 	{
-		d = (y - ad) * 256 - data->mlx.height * 128 +
-			render->spriteres.y * 128;
-		render->tex.y = ((d * sprite.height) / render->spriteres.y) / 256;
+		d = y * 2 - data->mlx.height +
+			render->spriteres.y;
+		render->tex.y = ((d * sprite.height) / render->spriteres.y) / 2;
 		if (render->tex.y < 0)
 			render->tex.y = 0;
 		image = (unsigned int *)data->scene.sprite_tex;
-		col.color = image[render->tex.y *
-			(sprite.ll / 4) + render->tex.x];
+		col.color = image[(render->tex.y *
+			(sprite.ll / 4)) + render->tex.x];
 		if (col.packed.a == 0)
 			ft_mlx_pixel_to_img(data, x, y, col.color);
 		y++;
@@ -39,7 +40,7 @@ void	ft_sprite_drawy(t_data *data, t_spriterender *render, int x, int ad)
 }
 
 void	ft_sprite_drawx(t_data *data, t_spriterender *render,
-						int spritescreen_x, int ad)
+						int spritescreen_x)
 {
 	int		x;
 
@@ -49,9 +50,10 @@ void	ft_sprite_drawx(t_data *data, t_spriterender *render,
 		render->tex.x = (int)(256 * (x - (-render->spriteres.x / 2 +
 			spritescreen_x)) * data->scene.sprite.width /
 			render->spriteres.x) / 256;
-		if (render->transform.y > 0 && x >= 0 && x < data->mlx.width - 1 &&
+		if (render->transform.y > 0 && x >= 0 &&
+			x < data->mlx.width &&
 			render->transform.y < data->mapdata.dist[x])
-			ft_sprite_drawy(data, render, x, ad);
+			ft_sprite_drawy(data, render, x);
 		x++;
 	}
 }
@@ -74,10 +76,10 @@ t_vec	ft_sprite_transform(t_data *data, int i)
 }
 
 void	ft_drawdata_get(t_data *data,
-		t_spriterender *render, int spritescreen_x, int ad)
+		t_spriterender *render, int spritescreen_x)
 {
-	render->drawstart.y = -render->spriteres.y / 2 + data->mlx.height / 2 + ad;
-	render->drawend.y = render->spriteres.y / 2 + data->mlx.height / 2 + ad;
+	render->drawstart.y = -render->spriteres.y / 2 + data->mlx.height / 2;
+	render->drawend.y = render->spriteres.y / 2 + data->mlx.height / 2;
 	if (render->drawstart.y < 0)
 		render->drawstart.y = 0;
 	if (render->drawend.y >= data->mlx.height)
@@ -94,15 +96,13 @@ void	ft_sprite_render(t_data *data, int index)
 {
 	t_spriterender	render;
 	int				spritescreen_x;
-	int				sprite_adjust;
 
 	render.transform = ft_sprite_transform(data, index);
-	sprite_adjust = (SPRITEHEIGHT / render.transform.y);
 	spritescreen_x = (int)((data->mlx.width / 2) *
 					(1 + render.transform.x / render.transform.y));
 	render.spriteres.y = ft_abs((int)((data->mlx.height /
-						render.transform.y))) / SPRITESCALE;
+						render.transform.y)));
 	render.spriteres.x = render.spriteres.y;
-	ft_drawdata_get(data, &render, spritescreen_x, sprite_adjust);
-	ft_sprite_drawx(data, &render, spritescreen_x, sprite_adjust);
+	ft_drawdata_get(data, &render, spritescreen_x);
+	ft_sprite_drawx(data, &render, spritescreen_x);
 }

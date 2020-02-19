@@ -6,7 +6,7 @@
 #    By: tbruinem <tbruinem@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/12/30 11:07:31 by tbruinem       #+#    #+#                 #
-#    Updated: 2020/02/19 12:21:39 by tbruinem      ########   odam.nl          #
+#    Updated: 2020/02/19 14:34:33 by tbruinem      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,8 @@ SRC =	$(SRC_DIR)/cub3d.c \
 		$(SRC_DIR)/ft_strclenb.c \
 		$(SRC_DIR)/ft_validate_color.c \
 		$(SRC_DIR)/ft_strlens.c \
+		$(SRC_DIR)/ft_memset.c \
+		$(SRC_DIR)/ft_calloc.c \
 		$(SRC_DIR)/ft_chrmatchs.c \
 		$(SRC_DIR)/ft_map_closecheck.c \
 		$(SRC_DIR)/ft_color.c \

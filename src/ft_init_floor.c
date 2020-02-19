@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 16:05:50 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/19 12:13:40 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/19 12:38:01 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	ft_init_floor(t_data *data, char *line, int i, int linenr)
 		exit(ft_error(data, ERR_STR_RANGE, linenr));
 	if (ft_validate_range(0, 255, b) == 0)
 		exit(ft_error(data, ERR_STR_RANGE, linenr));
-	ft_validate_color_entry(data, line + ft_strslen(line, "0123456789"),
-			ERR_STR_CEILING);
+	ft_validate_color_entry(data, line + ft_strclen(line, ' '),
+			ERR_STR_FLOOR);
 	data->scene.floor.packed.r = (char)r;
 	data->scene.floor.packed.g = (char)g;
 	data->scene.floor.packed.b = (char)b;

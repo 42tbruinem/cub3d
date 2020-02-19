@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/19 12:10:39 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/19 12:10:50 by tbruinem      ########   odam.nl         */
+/*   Created: 2020/02/11 23:35:37 by tbruinem       #+#    #+#                */
+/*   Updated: 2020/02/19 13:03:26 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,7 @@ char	ft_chrmatchs(char c, char *set)
 	size_t	i;
 
 	i = 0;
-	while (set[i])
-	{
-		if (set[i] == c)
-			return (1);
+	while (set[i] && set[i] != c)
 		i++;
-	}
-	return (0);
+	return (set[i] == 0) ? 0 : 1;
 }
