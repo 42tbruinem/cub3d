@@ -6,12 +6,11 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 14:53:59 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/18 12:25:26 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/19 12:24:30 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <stdio.h>
 
 void		ft_line_draw(t_data *data, t_dda *dda, t_line line, t_texdata tex)
 {
@@ -22,13 +21,12 @@ void		ft_line_draw(t_data *data, t_dda *dda, t_line line, t_texdata tex)
 	i = 0;
 	tex_y = ((line.start - data->mlx.height / 2 + line.length / 2)
 			* tex.y_step) - tex.y_step;
-//	if (tex_y < 0)
-//		tex_y = 0;
 	while (i < data->mlx.height)
 	{
 		if (i >= line.start && i <= line.end)
 		{
-			color = ft_texture_get(data, dda, tex.x, ((int)tex_y > 0) ? (int)tex_y : 0);
+			color = ft_texture_get(data, dda, tex.x,
+					((int)tex_y > 0) ? (int)tex_y : 0);
 			ft_mlx_pixel_to_img(data, line.x, i, color.color);
 			tex_y += tex.y_step;
 		}

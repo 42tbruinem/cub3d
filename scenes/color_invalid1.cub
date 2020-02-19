@@ -5,7 +5,7 @@ WE textures/wall_west.png
 EA textures/wall_east.png
 S textures/sprite.png
 F 50,0,0
-C -1,255,255
+C 255,0,0
 
 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1

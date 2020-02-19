@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 11:09:39 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/06 21:45:21 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/19 11:56:34 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char		*ft_strdupc(char *str, char c)
 	int		i;
 
 	i = 0;
-	len = ft_strlenc(str, c);
+	len = ft_strclen(str, c);
 	new = malloc(sizeof(char) * (len + 1));
 	if (!new)
 		return (NULL);
@@ -66,7 +66,7 @@ int			ft_strlencskip(char *str, char c)
 	return (len);
 }
 
-int			ft_strlenc(char *str, char c)
+int			ft_strclen(char *str, char c)
 {
 	int		i;
 

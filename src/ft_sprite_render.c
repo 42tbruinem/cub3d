@@ -6,12 +6,11 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 12:01:42 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/18 17:39:01 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/19 12:24:33 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <stdio.h>
 
 void	ft_sprite_drawy(t_data *data, t_spriterender *render, int x, int ad)
 {

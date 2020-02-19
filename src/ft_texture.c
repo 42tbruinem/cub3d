@@ -6,12 +6,11 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/27 17:56:12 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/18 12:35:06 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/19 12:24:20 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <stdio.h>
 
 t_color		ft_texture_get(t_data *data, t_dda *dda, int x, int y)
 {
@@ -19,7 +18,6 @@ t_color		ft_texture_get(t_data *data, t_dda *dda, int x, int y)
 	t_color			color;
 
 	image = data->scene.tex[dda->side];
-//	printf("X:%d | Y:%d\n", x, y);
 	image += (y * data->scene.walls[dda->side].ll +
 			(x * (data->scene.walls[dda->side].bpp / 8)));
 	color.color = *(unsigned int *)image;

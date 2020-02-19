@@ -6,7 +6,7 @@
 #    By: tbruinem <tbruinem@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/12/30 11:07:31 by tbruinem       #+#    #+#                 #
-#    Updated: 2020/02/18 17:43:07 by tbruinem      ########   odam.nl          #
+#    Updated: 2020/02/19 12:21:39 by tbruinem      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,13 @@ MLX_LINUX = $(LIB_DIR)/minilibx_linux
 
 SRC =	$(SRC_DIR)/cub3d.c \
 		$(SRC_DIR)/ft_bmp.c \
+		$(SRC_DIR)/ft_strslen.c \
+		$(SRC_DIR)/ft_strlenc.c \
+		$(SRC_DIR)/ft_strskipc.c \
+		$(SRC_DIR)/ft_strclenb.c \
+		$(SRC_DIR)/ft_validate_color.c \
+		$(SRC_DIR)/ft_strlens.c \
+		$(SRC_DIR)/ft_chrmatchs.c \
 		$(SRC_DIR)/ft_map_closecheck.c \
 		$(SRC_DIR)/ft_color.c \
 		$(SRC_DIR)/ft_coord.c \
