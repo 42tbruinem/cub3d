@@ -3,9 +3,9 @@ R 1920 1080
 SO ./textures/awesomeface.png
 WE ./textures/awesomeface.png
 EA ./textures/awesomeface.png
-S ./textures/awesomeface.png
+S ./textures/sprite.png
 F 0,0,255
-C 255,0,0
+C 255,0,3
 
 
 

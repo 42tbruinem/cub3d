@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/05 12:54:54 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/19 17:51:31 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/26 13:35:27 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ void	ft_position_update(t_data *data, t_vec incr, double speed)
 	pos.y += speed * incr.y;
 	newpos.y = data->cam.pos.y;
 	newpos.x = data->cam.pos.x;
-	if (pos.y > 0 && !ft_chrmatchs(map[(int)pos.y][(int)data->cam.pos.x], "12"))
+	if (pos.y > 0 &&
+		!ft_chrmatchs(map[(int)pos.y][(int)data->cam.pos.x], "1"))
 		newpos.y = pos.y;
-	if (pos.x > 0 && !ft_chrmatchs(map[(int)data->cam.pos.y][(int)pos.x], "12"))
+	if (pos.x > 0 &&
+		!ft_chrmatchs(map[(int)data->cam.pos.y][(int)pos.x], "1"))
 		newpos.x = pos.x;
 	newpos = ft_bumpifround(data->mapdata.map, newpos);
 	data->cam.pos = newpos;
