@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 14:17:48 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/26 20:34:29 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/26 23:01:50 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	ft_init_res(t_data *data, char *line, int i, int linenr)
 {
+	int		max_x;
+	int		max_y;
+
+	mlx_get_screen_size(data->mlx.data, &max_x, &max_y);
 	if (data->mlx.width == -1)
 		data->mlx.width = ft_atoi(line, &i);
 	else
@@ -24,10 +28,10 @@ void	ft_init_res(t_data *data, char *line, int i, int linenr)
 		exit(ft_error(data, ERR_STR_DOUBLEID, linenr));
 	if (data->mlx.width <= 0)
 		exit(ft_error(data, ERR_STR_RES, linenr));
-	if (data->mlx.width > MAX_WIDTH && !data->bmp)
-		data->mlx.width = MAX_WIDTH;
+	if (data->mlx.width > max_x && !data->bmp)
+		data->mlx.width = max_x;
 	if (data->mlx.height <= 0)
 		exit(ft_error(data, ERR_STR_RES, linenr));
-	if (data->mlx.height > MAX_HEIGHT && !data->bmp)
-		data->mlx.height = MAX_HEIGHT;
+	if (data->mlx.height > max_y && !data->bmp)
+		data->mlx.height = max_y;
 }
