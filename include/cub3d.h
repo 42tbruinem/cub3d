@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/10 12:35:38 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/19 14:33:33 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/26 20:03:55 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,8 +258,8 @@ void			ft_freedom(t_data *data);
 void			ft_map_del(char **map);
 double			ft_abs(double n);
 char			*ft_strdupc(char *str, char c);
-int				ft_strclen(char *str, char c);
-int				ft_strlen(char *str);
+size_t			ft_strclen(char *str, char c);
+size_t			ft_strlen(char *str);
 int				ft_strcmp(char *str, char *comp);
 int				ft_strlencskip(char *str, char c);
 char			*ft_strdup(char *str);

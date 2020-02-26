@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 17:16:58 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/17 15:23:16 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/26 20:10:22 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	ft_validate_data(t_data *data)
 {
 	if (data->mlx.width == -1 || data->mlx.height == -1)
 		exit(ft_error(data, ERR_STR_RES, -1));
-	if (data->scene.ceiling.color == 0)
+	if (data->scene.ceiling_set == 0)
 		exit(ft_error(data, ERR_STR_CEILING, -1));
-	if (data->scene.floor.color == 0)
+	if (data->scene.floor_set == 0)
 		exit(ft_error(data, ERR_STR_FLOOR, -1));
 	if (data->scene.sprite.img == NULL)
 		exit(ft_error(data, ERR_STR_SPRITE, -1));

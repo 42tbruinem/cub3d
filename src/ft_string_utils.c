@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 11:09:39 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/19 11:56:34 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/26 20:03:41 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int			ft_strlencskip(char *str, char c)
 	return (len);
 }
 
-int			ft_strclen(char *str, char c)
+size_t		ft_strclen(char *str, char c)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] && str[i] != c)
@@ -76,9 +76,9 @@ int			ft_strclen(char *str, char c)
 	return (i);
 }
 
-int			ft_strlen(char *str)
+size_t		ft_strlen(char *str)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])

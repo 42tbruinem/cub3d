@@ -6,12 +6,11 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/19 12:05:28 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/19 12:44:01 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/26 20:13:13 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <stdio.h>
 
 void	ft_validate_color_entry(t_data *data, char *line, char *errstr)
 {
@@ -19,7 +18,10 @@ void	ft_validate_color_entry(t_data *data, char *line, char *errstr)
 	size_t	commas;
 	size_t	numbers;
 	size_t	blocks;
+	size_t	preceding_spaces;
 
+	preceding_spaces = ft_strskipc(line, ' ');
+	line = (preceding_spaces) ? line + preceding_spaces : line;
 	blocks = ft_strclenb(line, ',');
 	len = ft_strlencskip(line, ' ');
 	commas = ft_strlenc(line, ',');

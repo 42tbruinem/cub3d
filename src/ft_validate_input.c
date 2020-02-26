@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 15:16:48 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/09 14:12:01 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/26 13:49:07 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_validate_input(t_data *data, int argc, char **input)
 	{
 		if (ft_strcmp(input[2], "--save") == 1)
 			exit(ft_error(data, ERR_STR_ARG, -1));
-		data->bmp = open("render.bmp", O_WRONLY | O_CREAT, 0644);
+		data->bmp = open("render.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	}
 	fd = open(input[1], O_RDONLY);
 	if (read(fd, (void *)0, 0) == -1)

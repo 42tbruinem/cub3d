@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 11:30:03 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/07 15:29:24 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/26 13:53:23 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void			ft_header_write(t_data *data)
 
 	width = (unsigned int)data->mlx.width;
 	height = (unsigned int)data->mlx.height;
-	size = (4 * (width * height));
+	size = (3 * (width * height));
+	size += ((width * 3) % 4) ? height * (4 - ((width * 3) % 4)) : 0;
 	write(data->bmp, "BM\x00\x00\x00\x00\x00\x00\x00\x00", 10);
 	write(data->bmp, "\x36\x00\x00\x00\x28\x00\x00\x00", 8);
 	write(data->bmp, &width, 4);
