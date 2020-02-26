@@ -6,7 +6,7 @@
 /*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 14:17:48 by tbruinem       #+#    #+#                */
-/*   Updated: 2020/02/09 14:10:38 by tbruinem      ########   odam.nl         */
+/*   Updated: 2020/02/26 20:34:29 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	ft_init_res(t_data *data, char *line, int i, int linenr)
 		exit(ft_error(data, ERR_STR_DOUBLEID, linenr));
 	if (data->mlx.width <= 0)
 		exit(ft_error(data, ERR_STR_RES, linenr));
-	if (data->mlx.width > MAX_WIDTH)
+	if (data->mlx.width > MAX_WIDTH && !data->bmp)
 		data->mlx.width = MAX_WIDTH;
 	if (data->mlx.height <= 0)
 		exit(ft_error(data, ERR_STR_RES, linenr));
-	if (data->mlx.height > MAX_HEIGHT)
+	if (data->mlx.height > MAX_HEIGHT && !data->bmp)
 		data->mlx.height = MAX_HEIGHT;
 }

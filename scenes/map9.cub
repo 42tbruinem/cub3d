@@ -1,7 +1,7 @@
 R 1024 720
 
-NO ./textures/nice.png
-SO ./textures/wall_south.png
+NO ./textures/wall_north.png
+SO ./textures/wall_north.png
 
 WE ./textures/wall_west.png
 EA ./textures/wall_east.png
